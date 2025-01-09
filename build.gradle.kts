@@ -1,8 +1,8 @@
 
 plugins {
     application
-    id("org.graalvm.buildtools.native") version "0.9.25"
-    val kotlinVersion = "1.9.10"
+    id("org.graalvm.buildtools.native") version "0.10.4"
+    val kotlinVersion = "2.1.20-Beta1"
     kotlin("jvm") version kotlinVersion
     id("org.jetbrains.kotlin.plugin.serialization") version kotlinVersion
 }
@@ -13,17 +13,17 @@ application {
     mainClass.set("simonvoid.gmx.de.ktor_graalvm.ApplicationKt")
 }
 
-//kotlin {
-//    // uses org.gradle.java.installations.auto-download=false in gradle.properties to disable auto provisioning of JDK
-//    jvmToolchain(17)
-//}
+kotlin {
+    // uses org.gradle.java.installations.auto-download=false in gradle.properties to disable auto provisioning of JDK
+    jvmToolchain(21)
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    val ktorVersion = "2.3.4"
+    val ktorVersion = "3.0.3"
 
     implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
