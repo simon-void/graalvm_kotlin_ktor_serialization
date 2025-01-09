@@ -22,30 +22,4 @@ class ApplicationTest {
             assertEquals("GraalVM-Ktor-Serialisation-Demo", bodyAsText())
         }
     }
-
-//    @Test
-//    fun testConversion() = testApplication {
-//        application {
-//            configureSerialization()
-//            configureRouting()
-//        }
-//        client.post("/format") {
-//            headers.append("Content-Type", "application/json;charset=UTF-8")
-//            setBody(
-//                """
-//                    {
-//                    ...
-//                    }
-//                    """.trimIndent()
-//            )
-//        }.apply {
-//            assertEquals(HttpStatusCode.OK, status)
-//            assertEquals(
-//                """
-//                    ...
-//                    """.trimIndent(),
-//                bodyAsText(),
-//            )
-//        }
-//    }
 }

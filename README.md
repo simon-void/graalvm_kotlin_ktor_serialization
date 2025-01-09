@@ -6,13 +6,13 @@ but with Spring Boot.
 
 ## Status
 
-currently not working. Linked to Bug ticket [KTOR-5705](https://youtrack.jetbrains.com/issue/KTOR-5705/GraalVM-Native-Image-support-for-client)
+working
 
 ## How to compile to native
 
 ### Preconditions
 
-- make sure GraalVm is installed (`sdk install java 23.r20-nik`) and the default JDK by checking that `native-image` is available as a command. (of course this assumes that [sdk is installed](https://sdkman.io/install))
+- make sure GraalVm is installed (`sdk install java 23.0.1-graalce`) and the default JDK by checking that `native-image` is available as a command. (of course this assumes that [sdk is installed](https://sdkman.io/install))
 - make sure gcc is installed (`sudo apt-get install gcc`)
 - on Ubuntu install libz-dev (`sudo apt-get install libz-dev`), if not on Ubuntu check the link in the troubleshooting section
 

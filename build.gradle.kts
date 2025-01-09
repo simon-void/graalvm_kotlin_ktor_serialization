@@ -2,7 +2,7 @@
 plugins {
     application
     id("org.graalvm.buildtools.native") version "0.10.4"
-    val kotlinVersion = "2.1.20-Beta1"
+    val kotlinVersion = "2.1.0"
     kotlin("jvm") version kotlinVersion
     id("org.jetbrains.kotlin.plugin.serialization") version kotlinVersion
 }
@@ -24,14 +24,13 @@ repositories {
 
 dependencies {
     val ktorVersion = "3.0.3"
-
     implementation("io.ktor:ktor-server-core-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-content-negotiation-jvm:$ktorVersion")
     implementation("io.ktor:ktor-serialization-kotlinx-json-jvm:$ktorVersion")
     implementation("io.ktor:ktor-server-cio:$ktorVersion")
+    implementation("ch.qos.logback:logback-classic:1.5.16")
 
-
-    testImplementation("io.ktor:ktor-server-tests-jvm:$ktorVersion")
+    testImplementation("io.ktor:ktor-server-test-host:$ktorVersion")
     testImplementation(kotlin("test"))
 }
 
@@ -47,13 +46,11 @@ graalvmNative {
             fallback.set(false)
             verbose.set(true)
 
-            buildArgs.add("--initialize-at-build-time=io.ktor,kotlin")
+            buildArgs.add("--initialize-at-build-time")
 
             buildArgs.add("-H:+InstallExitHandlers")
             buildArgs.add("-H:+ReportUnsupportedElementsAtRuntime")
             buildArgs.add("-H:+ReportExceptionStackTraces")
-            buildArgs.add("--initialize-at-build-time=kotlinx.coroutines")
-            buildArgs.add("--initialize-at-build-time=org.slf4j.LoggerFactory")
 
             imageName.set("graalvm_kotlin_ktor_serialization")
         }
